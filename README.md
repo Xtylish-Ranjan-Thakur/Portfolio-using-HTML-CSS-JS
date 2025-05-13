@@ -1,7 +1,7 @@
 # Portfolio-using-HTML-CSS-JS
 
 
-          Absolutely! Here's an **enhanced version** of the HTML, CSS, and JavaScript personal website with:
+          Absolutely! Here's an Enhanced version of the HTML, CSS, and JavaScript personal website with:
 
 - **More animations**
 - **Vibrant color scheme**
