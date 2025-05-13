@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ranjan Thakur - Software Engineer</title>
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f9fafb, #e0f7fa);
+      color: #111827;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 1rem;
+    }
+
+    /* Header Animation */
+    header {
+      background: linear-gradient(to right bottom, #6366f1, #22d3ee);
+      background-attachment: fixed;
+      background-size: cover;
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: white;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #4f46e5, 0 0 30px #22d3ee; }
+      to { text-shadow: 0 0 20px #fff, 0 0 30px #8b5cf6, 0 0 40px #06b6d4; }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    nav button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    nav button.active,
+    nav button:hover {
+      background: white;
+      color: #4f46e5;
+      transform: scale(1.05);
+    }
+
+    main {
+      padding: 4rem 1rem;
+    }
+
+    section {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4f46e5;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, #4f46e5, #0ea5e9);
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: floatCard 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatCard {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease;
+      animation: fadeInUp 1s ease 0.3s forwards;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .tech-stack span {
+      background: #dbeafe;
+      color: #3730a3;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      margin: 0.25rem;
+      display: inline-block;
+      font-size: 0.8rem;
+    }
+
+    .skills-list li {
+      margin: 0.5rem 0;
+      font-weight: 500;
+      color: #4f46e5;
+    }
+
+    footer {
+      background: linear-gradient(to right, #4f46e5, #0ea5e9);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    footer a:hover {
+      transform: scale(1.1);
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    .contact-form button {
+      background-color: #4f46e5;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #3730a3;
+    }
+
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      display: block;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      animation: rotateImg 10s linear infinite;
+    }
+
+    @keyframes rotateImg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    svg.icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Ranjan Thakur</h1>
+      <nav>
+        <button class="active" data-tab="about">About</button>
+        <button data-tab="education">Education</button>
+        <button data-tab="projects">Projects</button>
+        <button data-tab="skills">Skills</button>
+        <button data-tab="contact">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- About Section -->
+    <section id="about" class="active">
+      <h2 class="section-title">About Me</h2>
+      <img src="https://i.imgur.com/your-profile-image-url.jpg" alt="Profile Picture" class="profile-img"/>
+      <div class="card">
+        <h3>Hello! I'm Ranjan Thakur</h3>
+        <p>Software Engineer | Tech Enthusiast</p>
+        <p>
+          I am passionate about technology and software development. With a strong foundation in programming languages like Python and Java, I have experience in building robust applications.
+          My expertise extends to web development using HTML, CSS, and JavaScript, as well as database management with SQL.
+          I enjoy solving complex problems and continuously learning new technologies to enhance my skillset.
+        </p>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="hidden">
+      <h2 class="section-title">Education Background</h2>
+      <div class="card">
+        <h3>Bachelor of Technology in Computer Science</h3>
+        <p class="school"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg> Your College Name</p>
+        <p class="year">2018 - 2022</p>
+        <p>Focused on Data Structures, Algorithms, Programming Fundamentals, and Software Engineering.</p>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="hidden">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid">
+        <div class="project-card">
+          <div class="content">
+            <h3>Python Web Application</h3>
+            <div class="tech-stack">
+              <span>Python</span><span>Django</span><span>SQLite</span>
+            </div>
+            <p>Built a full-stack web application using Python and Django with SQLite for backend operations.</p>
+            <a href="#">View Project →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="content">
+            <h3>Java Desktop App</h3>
+            <div class="tech-stack">
+              <span>Java</span><span>Swing</span>
+            </div>
+            <p>Developed a desktop application using Java Swing for managing tasks and notes.</p>
+            <a href="#">View Project →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="content">
+            <h3>Static Website</h3>
+            <div class="tech-stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <p>Created a responsive static website showcasing my portfolio and skills.</p>
+            <a href="#">View Project →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="hidden">
+      <h2 class="section-title">Skills</h2>
+      <div class="card">
+        <ul class="skills-list">
+          <li>Python Programming</li>
+          <li>Java Programming</li>
+          <li>Web Development (HTML, CSS, JavaScript)</li>
+          <li>Database Management (SQL)</li>
+          <li>Version Control (Git)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="hidden">
+      <h2 class="section-title">Get In Touch</h2>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Your Email" required/>
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Ranjan Thakur. All rights reserved.</p>
+      <div class="socials mt-4">
+        <a href="#">LinkedIn</a> |
+        <a href="#">GitHub</a> |
+        <a href="#">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS for Tab Switching -->
+  <script>
+    const buttons = document.querySelectorAll('nav button');
+    const sections = document.querySelectorAll('main section');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all buttons
+        buttons.forEach(b => b.classList.remove('active'));
+        // Add active to clicked button
+        btn.classList.add('active');
+
+        // Hide all sections
+        sections.forEach(s => s.classList.add('hidden'));
+
+        // Show selected section
+        const target = btn.getAttribute('data-tab');
+        document.getElementById(target).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
